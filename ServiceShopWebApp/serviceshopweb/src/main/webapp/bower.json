@@ -1,0 +1,18 @@
+{
+  "name": "serviceShopWeb",
+  "authors": [
+    "david perrai adrien garandel"
+  ],
+  "description": "a web client for a shop write with wos2",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
