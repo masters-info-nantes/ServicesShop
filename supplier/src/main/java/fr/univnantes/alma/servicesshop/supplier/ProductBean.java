@@ -40,4 +40,9 @@ public class ProductBean {
         this.currency = currency;
     }
 
+    @Override
+    public String toString() {
+        return name + "/" + price + " " + currency;
+    }
+
 }
