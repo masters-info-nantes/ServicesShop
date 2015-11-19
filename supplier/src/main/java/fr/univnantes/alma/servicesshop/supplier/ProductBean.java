@@ -2,15 +2,11 @@ package fr.univnantes.alma.servicesshop.supplier;
 
 public class ProductBean {
 
-    enum CURRENCY {
-        EUR, USD, GBP
-    }
-
     private String name;
     private double price;
-    private CURRENCY currency;
+    private String currency;
 
-    public ProductBean(String name, double price, CURRENCY currency) {
+    public ProductBean(String name, double price, String currency) {
         this.name = name;
         this.price = price;
         this.currency = currency;
@@ -32,11 +28,11 @@ public class ProductBean {
         this.price = price;
     }
 
-    public CURRENCY getCurrency() {
+    public String getCurrency() {
         return currency;
     }
 
-    public void setCurrency(CURRENCY currency) {
+    public void setCurrency(String currency) {
         this.currency = currency;
     }
 
