@@ -34,7 +34,7 @@ import java.util.Map;
  */
 public class ServiceShop
 {
-//	
+	
 //	public static void main (String [] args) throws RemoteException, SupplierProductQuantityExceptionException, SupplierProductNotFoundExceptionException{
 //				
 //		HashMap<Long, SupplierStub.ProductBean> products = new HashMap<Long, SupplierStub.ProductBean>();
@@ -46,12 +46,12 @@ public class ServiceShop
 //		for (SupplierProductBean product : prods.get_return()) {
 //			products.put(product.getID(), product.getProduct());
 //		}
-//		
-//		// récupération du shopping cart
-//				ShoppingCartStub shoppingStub = new ShoppingCartStub("http://localhost:9763/services/ShoppingCart/");
-//				ShoppingCartStub.GetShopingCart getCart= new GetShopingCart();
-//				getCart.setClient(1);
-//				ShoppingCartStub.GetShopingCartResponse res = shoppingStub.getShopingCart(getCart);
+//
+////		// récupération du shopping cart
+////				ShoppingCartStub shoppingStub = new ShoppingCartStub("http://localhost:9763/services/ShoppingCart/");
+////				ShoppingCartStub.GetShopingCart cart= new GetShopingCart();
+////				cart.setClient(1);
+////				ShoppingCartStub.GetShopingCartResponse res = shoppingStub.getShopingCart(cart);
 ////				ShoppingCartBean shoppingCart = res.get_return();
 ////				
 //				double price=0.0;
@@ -132,9 +132,9 @@ public class ServiceShop
 		
 		// récupération du shopping cart
 		ShoppingCartStub shoppingStub = new ShoppingCartStub("http://localhost:9763/services/ShoppingCart/");
-		ShoppingCartStub.GetShopingCart getCart= new GetShopingCart();
-		getCart.setClient(Client);
-		GetShopingCartResponse res = shoppingStub.getShopingCart(getCart);
+		ShoppingCartStub.GetShopingCart cart= new GetShopingCart();
+		cart.setClient(Client);
+		GetShopingCartResponse res = shoppingStub.getShopingCart(cart);
 		ShoppingCartBean shoppingCart = res.get_return();
 		
 		double price=0.0;

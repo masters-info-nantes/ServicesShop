@@ -5,14 +5,14 @@ import java.util.List;
 
 public class ShoppingCartBean {
 
-    private List<ProductBean> allProduct;
+    private List<ProductCartBean> allProduct;
 
     public ShoppingCartBean() {
-        allProduct = new ArrayList<ProductBean>();
+        allProduct = new ArrayList<ProductCartBean>();
     }
 
     public void addProduct(Long productId, int quantity) {
-        ProductBean product = new ProductBean(productId, quantity);
+        ProductCartBean product = new ProductCartBean(productId, quantity);
         if (allProduct.contains(product)) {
             allProduct.set(allProduct.indexOf(product), product);
         } else {
@@ -21,18 +21,18 @@ public class ShoppingCartBean {
     }
 
     public void remove(Long productId) {
-        allProduct.remove(new ProductBean(productId, 0));
+        allProduct.remove(new ProductCartBean(productId, 0));
     }
 
     public Integer getProductQuantity(Long productID) {
-        for (ProductBean cart : allProduct) {
+        for (ProductCartBean cart : allProduct) {
             if (productID.equals(cart.getProductId()))
                 return cart.getQuantity();
         }
         return 0;
     }
 
-    public List<ProductBean> getAllProducts() {
+    public List<ProductCartBean> getAllProducts() {
         return allProduct;
     }
 

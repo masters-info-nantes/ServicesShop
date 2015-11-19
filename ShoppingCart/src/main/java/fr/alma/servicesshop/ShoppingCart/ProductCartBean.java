@@ -1,11 +1,11 @@
 package fr.alma.servicesshop.ShoppingCart;
 
-public class ProductBean {
+public class ProductCartBean {
 
     private Long productId;
     private int quantity;
 
-    public ProductBean(Long productId, int quantity) {
+    public ProductCartBean(Long productId, int quantity) {
         this.productId = productId;
         this.quantity = quantity;
     }
@@ -28,8 +28,8 @@ public class ProductBean {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof ProductBean)
-            return productId.equals(((ProductBean) obj).getProductId());
+        if (obj instanceof ProductCartBean)
+            return productId.equals(((ProductCartBean) obj).getProductId());
 
         return false;
     }

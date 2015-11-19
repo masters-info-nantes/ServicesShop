@@ -15,8 +15,9 @@ public class paymentService
 	
 	
 	public boolean pay(double price) {
-		if(price-money >= 0){
-			money = price - money;
+		
+		if(money-price >= 0){
+			money =  money - price ;
 			return true;
 		}
 		return false;
