@@ -17,30 +17,34 @@ public class ShoppingCart {
         return (cart != null) ? cart : new ShoppingCartBean();
     }
 
-    public void add(Integer client, ProductBean product, int quantity) {
+    public int add(Integer client, Long productId, int quantity) {
         ShoppingCartBean cart = getClient(client);
 
         try {
-            quantity += cart.getProductQuantity(product);
+            quantity += cart.getProductQuantity(productId);
         } catch (NullPointerException e) {
         }
 
-        cart.addProduct(product, quantity);
+        cart.addProduct(productId, quantity);
         clientCart.put(client, cart);
+
+        return cart.getProductQuantity(productId);
     }
 
-    public void remove(Integer client, ProductBean product, int quantity) {
+    public int remove(Integer client, Long productId, int quantity) {
         ShoppingCartBean cart = getClient(client);
 
-        int productQuantity = cart.getProductQuantity(product);
+        int productQuantity = cart.getProductQuantity(productId);
 
         productQuantity -= quantity;
 
         if (productQuantity <= 0) {
-            cart.remove(product);
+            cart.remove(productId);
+            productQuantity = 0;
         } else {
-            cart.addProduct(product, productQuantity);
+            cart.addProduct(productId, productQuantity);
         }
+        return productQuantity;
     }
 
     private ShoppingCartBean getClient(Integer client) {

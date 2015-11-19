@@ -1,28 +1,38 @@
 package fr.univnantes.alma.servicesshop.ShoppingCart;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShoppingCartBean {
-    private Map<ProductBean, Integer> allProduct;
+
+    private List<ProductBean> allProduct;
 
     public ShoppingCartBean() {
-        allProduct = new HashMap<ProductBean, Integer>();
+        allProduct = new ArrayList<>();
     }
 
-    public void addProduct(ProductBean product, int quantity) {
-        allProduct.put(product, quantity);
+    public void addProduct(Long productId, int quantity) {
+        ProductBean product = new ProductBean(productId, quantity);
+        if (allProduct.contains(product)) {
+            allProduct.set(allProduct.indexOf(product), product);
+        } else {
+            allProduct.add(product);
+        }
     }
 
-    public void remove(ProductBean product) {
-        allProduct.remove(product);
+    public void remove(Long productId) {
+        allProduct.remove(new ProductBean(productId, 0));
     }
 
-    public Integer getProductQuantity(ProductBean product) {
-        return allProduct.get(product);
+    public Integer getProductQuantity(Long productID) {
+        for (ProductBean cart : allProduct) {
+            if (productID.equals(cart.getProductId()))
+                return cart.getQuantity();
+        }
+        return 0;
     }
 
-    public Map<ProductBean, Integer> getAllProducts() {
+    public List<ProductBean> getAllProducts() {
         return allProduct;
     }
 

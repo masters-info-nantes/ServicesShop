@@ -2,58 +2,41 @@ package fr.univnantes.alma.servicesshop.ShoppingCart;
 
 public class ProductBean {
 
-    enum CURRENCY {
-        EUR, USD, GBP
+    private Long productId;
+    private int quantity;
+
+    public ProductBean(Long productId, int quantity) {
+        this.productId = productId;
+        this.quantity = quantity;
     }
 
-    private String name;
-    private double price;
-    private CURRENCY currency;
-
-    public ProductBean(String name, double price, CURRENCY currency) {
-        this.name = name;
-        this.price = price;
-        this.currency = currency;
+    public Long getProductId() {
+        return productId;
     }
 
-    public String getName() {
-        return name;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public CURRENCY getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(CURRENCY currency) {
-        this.currency = currency;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof ProductBean))
-            return false;
+        if (obj instanceof ProductBean)
+            return productId.equals(((ProductBean) obj).getProductId());
 
-        ProductBean other = (ProductBean) obj;
-
-        return name.equals(other.getName()) && price == other.getPrice()
-                && currency.equals(other.getCurrency());
+        return false;
     }
 
     @Override
     public String toString() {
-        return name + " : " + price + " " + currency;
+        return "{" + productId + ":" + quantity + "}";
     }
 
 }

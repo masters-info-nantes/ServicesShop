@@ -4,13 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import fr.univnantes.alma.servicesshop.ShoppingCart.ProductBean.CURRENCY;
-
 public class ShoppingCartTest {
-    private ProductBean product1 = new ProductBean("Product1", 0.75,
-            CURRENCY.EUR);
-    private ProductBean product2 = new ProductBean("Product2", 1.00,
-            CURRENCY.EUR);
+    private Long product1 = 1l;
+    private Long product2 = 2l;
 
     private ShoppingCartBean myShoppingCart;
     private ShoppingCart shopping;
