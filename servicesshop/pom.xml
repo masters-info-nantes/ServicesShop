@@ -25,6 +25,16 @@
 			<artifactId>supplierClient</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+   <dependency>
+   <groupId>fr.alma.servicesshop.paymentservice</groupId>
+    <artifactId>paymentServiceClient</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+   <dependency>
+  <groupId>fr.alma.servicesshop.shoppingcart</groupId>
+    <artifactId>shoppingCartClient</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </dependency>
 	</dependencies>
 	<artifactId>shop</artifactId>
 	<build>
