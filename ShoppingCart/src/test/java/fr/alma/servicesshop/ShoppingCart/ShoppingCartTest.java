@@ -22,7 +22,8 @@ public class ShoppingCartTest {
 
     @Test
     public void testEmptyCart() {
-        Assert.assertEquals("ShoppingCart begin empty", myShoppingCart,
+        Assert.assertEquals("ShoppingCart begin empty",
+                myShoppingCart.getAllProducts(),
                 shopping.getShopingCart(client));
     }
 
@@ -32,7 +33,8 @@ public class ShoppingCartTest {
 
         myShoppingCart.addProduct(product1, 5);
 
-        Assert.assertEquals("ShoppingCart add product", myShoppingCart,
+        Assert.assertEquals("ShoppingCart add product",
+                myShoppingCart.getAllProducts(),
                 shopping.getShopingCart(client));
     }
 
@@ -43,7 +45,8 @@ public class ShoppingCartTest {
 
         myShoppingCart.addProduct(product1, 8);
 
-        Assert.assertEquals("ShoppingCart add product", myShoppingCart,
+        Assert.assertEquals("ShoppingCart add product",
+                myShoppingCart.getAllProducts(),
                 shopping.getShopingCart(client));
     }
 
@@ -56,7 +59,8 @@ public class ShoppingCartTest {
         shopping.add(client, product2, 7);
         shopping.add(client, product1, 4);
 
-        Assert.assertEquals("ShoppingCart add all product", myShoppingCart,
+        Assert.assertEquals("ShoppingCart add all product",
+                myShoppingCart.getAllProducts(),
                 shopping.getShopingCart(client));
     }
 
@@ -65,7 +69,8 @@ public class ShoppingCartTest {
         shopping.add(client, product1, 1);
         shopping.remove(client, product1, 1);
 
-        Assert.assertEquals("ShoppingCart remove product", myShoppingCart,
+        Assert.assertEquals("ShoppingCart remove product",
+                myShoppingCart.getAllProducts(),
                 shopping.getShopingCart(client));
 
     }
@@ -79,7 +84,8 @@ public class ShoppingCartTest {
         shopping.remove(client, product2, 3);
         shopping.remove(client, product1, 4);
 
-        Assert.assertEquals("ShoppingCart remove product", myShoppingCart,
+        Assert.assertEquals("ShoppingCart remove product",
+                myShoppingCart.getAllProducts(),
                 shopping.getShopingCart(client));
 
     }

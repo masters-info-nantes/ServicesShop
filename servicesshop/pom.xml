@@ -11,7 +11,24 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<axis2_version>1.6.1-wso2v14</axis2_version>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>wso2-Nexus</id>
+			<name>WSO2 Repository</name>
+			<url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>wso2-Nexus</id>
+			<name>WSO2 Repository</name>
+			<url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 
 	<dependencies>
 		<dependency>
@@ -21,24 +38,108 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>fr.alma.servicesshop.supplier</groupId>
-			<artifactId>supplierClient</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2</artifactId>
+			<version>${axis2_version}</version>
 		</dependency>
-   <dependency>
-   <groupId>fr.alma.servicesshop.paymentservice</groupId>
-    <artifactId>paymentServiceClient</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </dependency>
-   <dependency>
-  <groupId>fr.alma.servicesshop.shoppingcart</groupId>
-    <artifactId>shoppingCartClient</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </dependency>
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-adb</artifactId>
+			<version>${axis2_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-transport-http</artifactId>
+			<version>${axis2_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-transport-local</artifactId>
+			<version>${axis2_version}</version>
+		</dependency>
 	</dependencies>
 	<artifactId>shop</artifactId>
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-wsdl2code-maven-plugin</artifactId>
+				<version>${axis2_version}</version>
+				<executions>
+					<execution>
+						<id>generate ShoppingCart client</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>wsdl2code</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/generated-sources</outputDirectory>
+							<databindingName>adb</databindingName>
+							<language>java</language>
+							<wsdlFile>http://172.28.0.164:9763/services/ShoppingCart?wsdl</wsdlFile>
+							<portName>ShoppingCartHttpSoap12Endpoint</portName>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>generate Supplier client</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>wsdl2code</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/generated-sources</outputDirectory>
+							<databindingName>adb</databindingName>
+							<language>java</language>
+							<wsdlFile>http://172.28.0.164:9763/services/Supplier?wsdl</wsdlFile>
+							<portName>SupplierHttpSoap12Endpoint</portName>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>generate PayementService client</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>wsdl2code</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/generated-sources</outputDirectory>
+							<databindingName>adb</databindingName>
+							<language>java</language>
+							<wsdlFile>http://172.28.0.164:9763/services/paymentService?wsdl</wsdlFile>
+							<portName>paymentServiceHttpSoap12Endpoint</portName>
+						</configuration>
+					</execution>
+
+				</executions>
+
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${basedir}/generated-sources/src</source>
+								<source>${basedir}/generated-sources/test</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>

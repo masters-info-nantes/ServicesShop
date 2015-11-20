@@ -1,7 +1,6 @@
 package fr.alma.servicesshop.supplier;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import fr.alma.servicesshop.supplier.exception.ProductNotFoundException;
@@ -24,6 +23,14 @@ public class Supplier {
                     new ProductBean("Product2", 1.00, "EUR"), 50));
             allProduct.add(new SupplierProductBean(100874887386476544l,
                     new ProductBean("Product3", 10.50, "EUR"), 20));
+            allProduct.add(new SupplierProductBean(100874887386476544l,
+                    new ProductBean("Product4", 8.90, "EUR"), 30));
+            allProduct.add(new SupplierProductBean(100874887386476544l,
+                    new ProductBean("Product5", 1.50, "EUR"), 50));
+            allProduct.add(new SupplierProductBean(100874887386476544l,
+                    new ProductBean("Product6", 15.80, "EUR"), 20));
+            allProduct.add(new SupplierProductBean(100874887386476544l,
+                    new ProductBean("Product7", 0.35, "EUR"), 200));
 
             System.out.println("Setup Supplier BDD : " + allProduct);
         }

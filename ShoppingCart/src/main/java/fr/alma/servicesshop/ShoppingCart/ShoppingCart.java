@@ -1,6 +1,7 @@
 package fr.alma.servicesshop.ShoppingCart;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ShoppingCart {
@@ -11,10 +12,11 @@ public class ShoppingCart {
         clientCart = new HashMap<Integer, ShoppingCartBean>();
     }
 
-    public ShoppingCartBean getShopingCart(Integer client) {
+    public List<ProductCartBean> getShopingCart(Integer client) {
         ShoppingCartBean cart = clientCart.get(client);
 
-        return (cart != null) ? cart : new ShoppingCartBean();
+        return (cart != null) ? cart.getAllProducts()
+                : new ShoppingCartBean().getAllProducts();
     }
 
     public int add(Integer client, Long productId, int quantity) {
