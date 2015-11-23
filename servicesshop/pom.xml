@@ -12,6 +12,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<axis2_version>1.6.1-wso2v14</axis2_version>
+		<axis2_host>localhost</axis2_host>
+		<axis2_source>http://${axis2_host}:9763/services</axis2_source>
 	</properties>
 
 	<repositories>
@@ -76,7 +78,7 @@
 							<outputDirectory>${basedir}/generated-sources</outputDirectory>
 							<databindingName>adb</databindingName>
 							<language>java</language>
-							<wsdlFile>http://172.28.0.164:9763/services/ShoppingCart?wsdl</wsdlFile>
+							<wsdlFile>${axis2_source}/ShoppingCart?wsdl</wsdlFile>
 							<portName>ShoppingCartHttpSoap12Endpoint</portName>
 						</configuration>
 					</execution>
@@ -91,7 +93,7 @@
 							<outputDirectory>${basedir}/generated-sources</outputDirectory>
 							<databindingName>adb</databindingName>
 							<language>java</language>
-							<wsdlFile>http://172.28.0.164:9763/services/Supplier?wsdl</wsdlFile>
+							<wsdlFile>${axis2_source}/Supplier?wsdl</wsdlFile>
 							<portName>SupplierHttpSoap12Endpoint</portName>
 						</configuration>
 					</execution>
@@ -106,7 +108,7 @@
 							<outputDirectory>${basedir}/generated-sources</outputDirectory>
 							<databindingName>adb</databindingName>
 							<language>java</language>
-							<wsdlFile>http://172.28.0.164:9763/services/paymentService?wsdl</wsdlFile>
+							<wsdlFile>${axis2_source}/paymentService?wsdl</wsdlFile>
 							<portName>paymentServiceHttpSoap12Endpoint</portName>
 						</configuration>
 					</execution>

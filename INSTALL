@@ -1,0 +1,19 @@
+Install Atomic services
+=======================
+
+```
+for project in ShoppingCart paymentService supplier;
+do
+(cd $project && mvn clean install);
+done
+```
+
+Install ServicesShop
+====================
+
+Launch WSO2 and deploy all previous services
+
+```
+(cd servicesshop && mvn clean install)
+```
+
