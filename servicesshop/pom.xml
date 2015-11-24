@@ -108,8 +108,8 @@
 							<outputDirectory>${basedir}/generated-sources</outputDirectory>
 							<databindingName>adb</databindingName>
 							<language>java</language>
-							<wsdlFile>${axis2_source}/paymentService?wsdl</wsdlFile>
-							<portName>paymentServiceHttpSoap12Endpoint</portName>
+							<wsdlFile>${axis2_source}/PaymentService?wsdl</wsdlFile>
+							<portName>PaymentServiceHttpSoap12Endpoint</portName>
 						</configuration>
 					</execution>
 
@@ -176,6 +176,15 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

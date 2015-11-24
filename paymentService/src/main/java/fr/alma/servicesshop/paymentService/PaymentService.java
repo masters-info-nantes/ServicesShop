@@ -4,7 +4,7 @@ package fr.alma.servicesshop.paymentService;
  * payment service
  *
  */
-public class paymentService
+public class PaymentService
 {
     
 	private double money=1000.0;
