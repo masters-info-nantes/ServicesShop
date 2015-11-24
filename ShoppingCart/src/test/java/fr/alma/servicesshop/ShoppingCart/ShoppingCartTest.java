@@ -8,7 +8,7 @@ public class ShoppingCartTest {
     private Long product1 = 1l;
     private Long product2 = 2l;
 
-    private ShoppingCartBean myShoppingCart;
+    private ShoppingCartRepository myShoppingCart;
     private ShoppingCart shopping;
 
     private Integer client;
@@ -16,7 +16,7 @@ public class ShoppingCartTest {
     @Before
     public void setUp() {
         client = 1;
-        myShoppingCart = new ShoppingCartBean();
+        myShoppingCart = new ShoppingCartRepository();
         shopping = new ShoppingCart();
     }
 

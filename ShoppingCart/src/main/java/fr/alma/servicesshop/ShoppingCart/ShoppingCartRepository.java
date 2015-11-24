@@ -3,11 +3,11 @@ package fr.alma.servicesshop.ShoppingCart;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingCartBean {
+public class ShoppingCartRepository {
 
     private List<ProductCartBean> allProduct;
 
-    public ShoppingCartBean() {
+    public ShoppingCartRepository() {
         allProduct = new ArrayList<ProductCartBean>();
     }
 
@@ -34,19 +34,6 @@ public class ShoppingCartBean {
 
     public List<ProductCartBean> getAllProducts() {
         return allProduct;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof ShoppingCartBean)
-            return allProduct.equals(((ShoppingCartBean) obj).getAllProducts());
-
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        return allProduct.toString();
     }
 
 }

@@ -6,21 +6,21 @@ import java.util.Map;
 
 public class ShoppingCart {
 
-    Map<Integer, ShoppingCartBean> clientCart;
+    Map<Integer, ShoppingCartRepository> clientCart;
 
     public ShoppingCart() {
-        clientCart = new HashMap<Integer, ShoppingCartBean>();
+        clientCart = new HashMap<Integer, ShoppingCartRepository>();
     }
 
     public List<ProductCartBean> getShopingCart(Integer client) {
-        ShoppingCartBean cart = clientCart.get(client);
+        ShoppingCartRepository cart = clientCart.get(client);
 
         return (cart != null) ? cart.getAllProducts()
-                : new ShoppingCartBean().getAllProducts();
+                : new ShoppingCartRepository().getAllProducts();
     }
 
     public int add(Integer client, Long productId, int quantity) {
-        ShoppingCartBean cart = getClient(client);
+        ShoppingCartRepository cart = getClient(client);
 
         try {
             quantity += cart.getProductQuantity(productId);
@@ -34,7 +34,7 @@ public class ShoppingCart {
     }
 
     public int remove(Integer client, Long productId, int quantity) {
-        ShoppingCartBean cart = getClient(client);
+        ShoppingCartRepository cart = getClient(client);
 
         int productQuantity = cart.getProductQuantity(productId);
 
@@ -49,9 +49,9 @@ public class ShoppingCart {
         return productQuantity;
     }
 
-    private ShoppingCartBean getClient(Integer client) {
+    private ShoppingCartRepository getClient(Integer client) {
         return (clientCart.containsKey(client)) ? clientCart.get(client)
-                : new ShoppingCartBean();
+                : new ShoppingCartRepository();
     }
 
 }
