@@ -3,7 +3,6 @@ package fr.alma.servicesshop;
 import java.rmi.RemoteException;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.axis2.AxisFault;
@@ -42,35 +41,19 @@ public class SupplierAdapter {
         return products.get(productId);
     }
 
-    public boolean commandProducts(List<ProductCartBean> commandProducts)
-            throws RemoteException {
-        boolean success = true;
-
-        for (ProductCartBean oneProduct : commandProducts) {
-            success = commandOneProduct(oneProduct);
-        }
-
-        return success;
-
-    }
-
-    private boolean commandOneProduct(ProductCartBean oneProduct)
-            throws AxisFault, RemoteException {
+    public boolean commandOneProduct(ProductCartBean oneProduct)
+            throws AxisFault, RemoteException,
+            SupplierProductQuantityExceptionException,
+            SupplierProductNotFoundExceptionException {
 
         SupplierStub stub = new SupplierStub(SERVICES_SUPPLIER);
         SupplierStub.CommandProduct command = new CommandProduct();
         command.setId(oneProduct.getProductId());
         command.setQuantity(oneProduct.getQuantity());
 
-        try {
-            CommandProductResponse response = stub.commandProduct(command);
-            products.get(oneProduct.getProductId())
-                    .setQuantity(response.get_return());
-        } catch (SupplierProductQuantityExceptionException
-                | SupplierProductNotFoundExceptionException e) {
-            e.printStackTrace();
-            return false;
-        }
+        CommandProductResponse response = stub.commandProduct(command);
+        products.get(oneProduct.getProductId())
+                .setQuantity(response.get_return());
 
         return true;
     }

@@ -45,28 +45,31 @@ public class ServiceShop {
         return new ArrayList<>(supplier.getProducts());
     }
 
-    public Boolean commandProduct(int client) throws AxisFault, RemoteException,
-            SupplierProductQuantityExceptionException,
-            SupplierProductNotFoundExceptionException {
-
-        boolean success = true;
+    public double commandProduct(int client) throws AxisFault, RemoteException {
 
         List<ProductCartBean> myProducts = shoppingCart.getProduct(client);
 
         double price = 0.0;
         for (ProductCartBean oneProduct : myProducts) {
-            ProductBean supplierProduct = supplier
-                    .getProduct(oneProduct.getProductId()).getProduct();
-            price += supplierProduct.getPrice();
+
+            try {
+                supplier.commandOneProduct(oneProduct);
+
+                ProductBean supplierProduct = supplier
+                        .getProduct(oneProduct.getProductId()).getProduct();
+                price += supplierProduct.getPrice();
+
+            } catch (SupplierProductQuantityExceptionException
+                    | SupplierProductNotFoundExceptionException e) {
+                e.printStackTrace();
+            }
+
         }
 
-        success = payment.pay(price);
-
-        if (success) {
-            supplier.commandProducts(myProducts);
+        if (price != 0.0) {
+            payment.pay(price);
         }
 
-        return success;
+        return price;
     }
-
 }
