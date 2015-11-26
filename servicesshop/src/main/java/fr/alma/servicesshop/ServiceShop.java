@@ -1,16 +1,15 @@
 package fr.alma.servicesshop;
 
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.axis2.AxisFault;
-
 import fr.alma.servicesshop.shoppingcart.ShoppingCartStub.ProductCartBean;
 import fr.alma.servicesshop.supplier.SupplierProductNotFoundExceptionException;
 import fr.alma.servicesshop.supplier.SupplierProductQuantityExceptionException;
 import fr.alma.servicesshop.supplier.SupplierStub.ProductBean;
 import fr.alma.servicesshop.supplier.SupplierStub.SupplierProductBean;
+import org.apache.axis2.AxisFault;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * shop
@@ -37,6 +36,10 @@ public class ServiceShop {
             throws RemoteException {
 
         return shoppingCart.remove(client, productId, quantity);
+    }
+
+    public List<ProductCartBean> getShoppingCart(int client) throws RemoteException {
+        return shoppingCart.getProduct(client);
     }
 
     public List<SupplierProductBean> getProducts()
