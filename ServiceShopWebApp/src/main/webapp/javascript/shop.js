@@ -1,6 +1,10 @@
 
+if(sessionStorage.getItem("idClient") == null){
+  sessionStorage.setItem("idClient",Math.floor((Math.random() * 100000) + 1));  
+}
+
 $.soap({
-    url: 'http://172.28.0.164:9763/services/ServiceShop/',
+    url: 'http://192.168.31.71:9763/services/ServiceShop/',
     namespaceURL: 'http://servicesshop.alma.fr'
 });
 
@@ -33,7 +37,7 @@ $.soap({
     $('.addition').click(function(product) {
       $.soap({
         data:{
-          client:1,
+          client: sessionStorage.getItem("idClient"),
           idProduct:product.target.id,
           quantity:$(".product #" + product.target.id).parent().find("input[name='quantity']")[0].value
         },

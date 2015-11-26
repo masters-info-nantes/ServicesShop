@@ -53,7 +53,7 @@
 <script type="text/javascript" src="bower_components/jquery.soap/jquery.soap.js"></script>
 <script type="text/javascript" src="bower_components/jquery-xml2json/src/xml2json.js"></script>
 <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="javascript/callService.js"></script>
+<script type="text/javascript" src="javascript/shop.js"></script>
 
 
 </body>

@@ -14,6 +14,7 @@ import fr.alma.servicesshop.supplier.SupplierStub;
 import fr.alma.servicesshop.supplier.SupplierStub.CommandProduct;
 import fr.alma.servicesshop.supplier.SupplierStub.CommandProductResponse;
 import fr.alma.servicesshop.supplier.SupplierStub.GetProducts;
+import fr.alma.servicesshop.supplier.SupplierStub.ProductBean;
 import fr.alma.servicesshop.supplier.SupplierStub.SupplierProductBean;
 
 public class SupplierAdapter {
@@ -69,5 +70,6 @@ public class SupplierAdapter {
             products.put(product.getID(), product);
         }
     }
+
 
 }

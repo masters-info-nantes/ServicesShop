@@ -4,9 +4,6 @@
   <title>ServiceShop</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="bower_components/jquery.soap/jquery.soap.js"></script>
-<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
@@ -46,38 +43,22 @@
     <thead>
       <tr>
         <th>Product name</th>
-        <th>Description</th>
+        <th>Quantity</th>
         <th>Price</th>
-        <th>action</th>
+        <th>Action</th>
       </tr>
     </thead>
-    <tbody>
-     <tr>
-     	<td>prod1</td>
-     	<td>description</td>
-     	<td>35 €</td>
-     	<td>
-     		<button class="btn btn-danger btn-md">
-          		<span class="glyphicon glyphicon-minus"></span> Delete 
-        	</button>
-        </td>
-     </tr>
+    <tbody id="productTable">
     </tbody>
-    <tfoot>
-    	<tr class="success">
-    		<td colspan="2">Total</td>
-    		<td>35 €</td>
-    		<td>
-    			<button class="btn btn-success btn-md">
-          			<span class="glyphicon  glyphicon-ok"></span> Paying 
-        		</button>
-    		</td>
-    	</tr>
+    <tfoot id ="cartFoot">
     </tfoot>
   </table>
 </div>	
 </body>
 <footer>
-<script type="text/javascript" src="javascript/callService.js"></script>	
-</footer>
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery.soap/jquery.soap.js"></script>
+<script type="text/javascript" src="bower_components/jquery-xml2json/src/xml2json.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascript/shoppingCart.js"></script>
 </html>

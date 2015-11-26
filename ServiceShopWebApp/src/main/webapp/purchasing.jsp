@@ -4,9 +4,6 @@
   <title>ServiceShop</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="bower_components/jquery.soap/jquery.soap.js"></script>
-<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
@@ -112,6 +109,9 @@
 
 </body>
 <footer>
-<script type="text/javascript" src="javascript/callService.js"></script>	
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery.soap/jquery.soap.js"></script>
+<script type="text/javascript" src="bower_components/jquery-xml2json/src/xml2json.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </footer>
 </html>

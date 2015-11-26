@@ -41,6 +41,15 @@ public class ServiceShop {
     public List<ProductCartBean> getShoppingCart(int client) throws RemoteException {
         return shoppingCart.getProduct(client);
     }
+    
+    public  SupplierProductBean getProduct(Long id) throws RemoteException {
+    	SupplierProductBean remoteObject = supplier.getProduct(id);
+    	SupplierProductBean response = new SupplierProductBean();
+    	response.setID(remoteObject.getID());
+    	response.setQuantity(remoteObject.getQuantity());
+    	response.setProduct(remoteObject.getProduct());
+    	 return response;
+    }
 
     public List<SupplierProductBean> getProducts()
             throws AxisFault, RemoteException {
