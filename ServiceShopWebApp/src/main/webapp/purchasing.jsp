@@ -100,7 +100,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
-          <button type="button" class="btn btn-success">Pay Now</button>
+          <button type="button" class="btn btn-success" id="paymentButton">Pay Now</button>
         </div>
       </div>
     </fieldset>
@@ -113,5 +113,6 @@
 <script type="text/javascript" src="bower_components/jquery.soap/jquery.soap.js"></script>
 <script type="text/javascript" src="bower_components/jquery-xml2json/src/xml2json.js"></script>
 <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascript/payment.js"></script>
 </footer>
 </html>
