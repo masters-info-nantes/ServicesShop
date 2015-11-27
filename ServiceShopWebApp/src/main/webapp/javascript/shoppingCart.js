@@ -1,5 +1,5 @@
 $.soap({
-    url: 'http://192.168.1.72:9763/services/ServiceShop/',
+    url: 'http://192.168.31.71:9763/services/ServiceShop/',
     namespaceURL: 'http://servicesshop.alma.fr'
 });
 
@@ -25,7 +25,7 @@ $.soap({
                
                totalPrice += Math.round(parseFloat(quantity)*parseFloat(product[0][indice]["price"]["_"])*100)/100;
                $("#productTable").append(
-                '<tr> \
+                '<tr id="ligne-'+idProduct+'"> \
                 <td>'+product[0][indice]["name"]["_"] +'</td> \
                 <td> <span  id="quantity'+idProduct+'">'+quantity+'</span></td> \
                 <td>'+product[0][indice]["price"]["_"] + ' ' + product[0][indice]["currency"]["_"] + '</td> \
@@ -77,18 +77,22 @@ function Delete(id,price) {
     success: function(response) {
 
       var quantity = response.toJSON()["#document"]["ns:removeResponse"]["ns:return"];
-    
-      $("#quantity"+id).html(quantity);
 
-          var newTotalPrice = parseFloat($("#TotalPrice").text().split(" ")[0])-parseFloat(price);
-          if(newTotalPrice != 0.0){
+      $("#quantity"+id).html(quantity);
+      var newTotalPrice = parseFloat($("#TotalPrice").text().split(" ")[0])-parseFloat(price);
+      
+      if(newTotalPrice  > 0.0){
             $(document).ajaxStop(function () {
+              if(parseInt(quantity) == 0){
+                $("#ligne-"+id).remove();  
+              }
+                
               $("#cartFoot").replaceWith(
 
                         '<tfoot id="cartFoot"> \
                         <tr class="success"> \
                       <td colspan="2">Total</td> \
-                      <td><span id=\'TotalPrice\'>'+newTotalPrice+' EUR</span></td> \
+                      <td><span id=\'TotalPrice\'>'+Math.round(newTotalPrice*100)/100+' EUR</span></td> \
                       <td> \
                       <a href="purchasing.jsp">\
                       <button class="btn btn-success btn-md" id="payingButton"> \
@@ -98,9 +102,9 @@ function Delete(id,price) {
                       </td> \
                       </tr> \
                       </tfoot>'
-            );
+              );
            });
-        }else{
+        }else if(newTotalPrice  <= 0.0) {
            $(document).ajaxStop(function () {
               $("#productTable").replaceWith(
 

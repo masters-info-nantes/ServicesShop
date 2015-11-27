@@ -1,7 +1,7 @@
 $("#paymentButton").click(function() {
 	if(sessionStorage.getItem("idClient") != null){
 		  $.soap({
-		    url: 'http://192.168.1.72:9763/services/ServiceShop/',
+		    url: 'http://192.168.31.71:9763/services/ServiceShop/',
 		    namespaceURL: 'http://servicesshop.alma.fr'
 		});
 
